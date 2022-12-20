@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>ANTs</title>
+    <url>/2022/12/20/ANTs/</url>
+    <content><![CDATA[<h1 id="ANTs-Advanced-Normalization-Tools"><a href="#ANTs-Advanced-Normalization-Tools" class="headerlink" title="ANTs: Advanced Normalization Tools"></a>ANTs: Advanced Normalization Tools</h1><p>Check <a href="https://github.com/mrirecon/bart">github</a> for source code.</p>
+<h3 id="Group-Wise-Registration"><a href="#Group-Wise-Registration" class="headerlink" title="Group-Wise Registration"></a>Group-Wise Registration</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">antsMultivariateTemplateConstruction2.sh -d 3 -o atlas_ -a 0 -i 5 -g 0.1 -j 10 -c 2 -w 1x0.5x0.5x0.5 -n 0 -m CC -r 1 -q 80x60x40x20 *.nii.gz</span><br></pre></td></tr></table></figure>
+
+<h3 id="Registration"><a href="#Registration" class="headerlink" title="Registration"></a>Registration</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">antsRegistrationSyN.sh -d 3 -f fixed.nii.gz -m moving.nii.gz -o template_2_ind_ -n100</span><br></pre></td></tr></table></figure>
+
+<h3 id="Apply-Transformation"><a href="#Apply-Transformation" class="headerlink" title="Apply Transformation"></a>Apply Transformation</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">antsApplyTransforms -d 3 -i moving.nii.gz -r fixed.nii.gz -o output.nii.gz -t template_2_ind_1Warp.nii.gz -t template_2_ind_0GenericAffine.mat -n BSpline</span><br></pre></td></tr></table></figure>
+
+<h3 id="Apply-Inverse-Transformation"><a href="#Apply-Inverse-Transformation" class="headerlink" title="Apply Inverse Transformation"></a>Apply Inverse Transformation</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">antsApplyTransforms -d 3 -i fixed.nii.gz -r moving.nii.gz -o output.nii.gz -t [template_2_ind_0GenericAffine.mat, 1] -t template_2_ind_1InverseWarp.nii.gz -n BSpline</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Note</category>
+      </categories>
+      <tags>
+        <tag>ANTs</tag>
+        <tag>Registration</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo</title>
+    <url>/2022/12/20/Hexo/</url>
+    <content><![CDATA[<h1 id="Hexo-A-fast-simple-amp-powerful-blog-framework"><a href="#Hexo-A-fast-simple-amp-powerful-blog-framework" class="headerlink" title="Hexo: A fast, simple &amp; powerful blog framework"></a>Hexo: A fast, simple &amp; powerful blog framework</h1><p>Check <a href="https://hexo.io/docs/">documentation</a> for more info.</p>
+<h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Note</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2022/12/20/My-First-Blog/</url>
+    <content><![CDATA[<h1 id="This-is-my-first-blog"><a href="#This-is-my-first-blog" class="headerlink" title="This is my first blog"></a>This is my first blog</h1>]]></content>
+      <categories>
+        <category>Diary</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Welcome</title>
+    <url>/2022/12/20/Welcome/</url>
+    <content><![CDATA[<p>Welcome to GyLao’s blog.</p>
+<p>For personal introduction, please visit <a href="/about/">About</a>.</p>
+]]></content>
+      <tags>
+        <tag>Diary</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SigPy</title>
+    <url>/2022/12/20/SigPy/</url>
+    <content><![CDATA[<h1 id="SigPy-A-Python-package-for-signal-processing-and-MRI-reconstruction"><a href="#SigPy-A-Python-package-for-signal-processing-and-MRI-reconstruction" class="headerlink" title="SigPy: A Python package for signal processing and MRI reconstruction"></a>SigPy: A Python package for signal processing and MRI reconstruction</h1><p>Check <a href="https://sigpy.readthedocs.io/en/latest/">documentation</a>, <a href="https://github.com/mikgroup/sigpy-mri-tutorial">tutorial</a> for more info and <a href="https://github.com/mikgroup/sigpy">github</a> for source code.</p>
+<h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sigpy <span class="keyword">as</span> sp</span><br><span class="line"><span class="keyword">import</span> sigpy.mri <span class="keyword">as</span> mr</span><br><span class="line"></span><br><span class="line"><span class="comment"># The size of the k-space data is [nCh, nPE, nSPE]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Estimate sensitivity maps using Esprit</span></span><br><span class="line">sensmaps = mr.app.EspiritCalib(kspace, show_pbar=<span class="literal">False</span>).run()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Reconstruct image using SENSE</span></span><br><span class="line">lamda_Sense = <span class="number">0.01</span></span><br><span class="line">img_sense = mr.app.SenseRecon(kspace, sensmaps, lamda=lamda_Sense, show_pbar=<span class="literal">False</span>).run()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Reconstruct image using L1 wavelet regularized reconstruction</span></span><br><span class="line">lamda_L1Wav = <span class="number">0.005</span></span><br><span class="line">img_l1wav = mr.app.L1WaveletRecon(kspace, sensmaps, lamda=lamda_L1Wav, show_pbar=<span class="literal">False</span>).run()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Reconstruct image using Total Variation regularized reconstruction</span></span><br><span class="line">lamda_TV = <span class="number">0.005</span></span><br><span class="line">img_tv = mr.app.TotalVariationRecon(kspace, sensmaps, lamda=lamda_TV, show_pbar=<span class="literal">False</span>).run()</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Note</category>
+      </categories>
+      <tags>
+        <tag>Sigpy</tag>
+        <tag>MRI Reconstruction</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>BART</title>
+    <url>/2022/12/20/BART/</url>
+    <content><![CDATA[<h1 id="BART-Toolbox-for-Computational-Magnetic-Resonance-Imaging"><a href="#BART-Toolbox-for-Computational-Magnetic-Resonance-Imaging" class="headerlink" title="BART: Toolbox for Computational Magnetic Resonance Imaging"></a>BART: Toolbox for Computational Magnetic Resonance Imaging</h1><p>Check <a href="https://mrirecon.github.io/bart/index.html">documentation</a> for more info and <a href="https://github.com/mrirecon/bart">github</a> for source code.</p>
+<h3 id="Matlab"><a href="#Matlab" class="headerlink" title="Matlab"></a>Matlab</h3><figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line"><span class="comment">% The size of the k-space data is [1, nPE, nSPE, nCh]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% Estimate sensitivity maps using Esprit</span></span><br><span class="line">sensmaps = bart(<span class="string">&#x27;ecalib&#x27;</span>, kspace);</span><br><span class="line"></span><br><span class="line"><span class="comment">% Reconstruct image using L1 wavelet regularized reconstruction</span></span><br><span class="line">image_CS = bart(<span class="string">&#x27;pics -l1 -r0.01&#x27;</span>, kspace, sensmaps);</span><br></pre></td></tr></table></figure>
+
+
+]]></content>
+      <categories>
+        <category>Note</category>
+      </categories>
+      <tags>
+        <tag>MRI Reconstruction</tag>
+        <tag>BART</tag>
+      </tags>
+  </entry>
+</search>
